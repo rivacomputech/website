@@ -312,9 +312,7 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .brand .blogo{height:72px;width:auto}
 .hero-brand{--blink:curblink}
 @keyframes curblink{50%{opacity:0}}
-.status{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--stroke);
   font-size:13px;font-weight:600;color:var(--text-2);box-shadow:var(--shadow-card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.hero-top .status{display:none}
 .hero-main{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:48px;padding-top:40px;padding-bottom:104px}
 .hero-copy .kicker{margin-bottom:24px}
 .hero h1{font-size:clamp(44px,5.6vw,70px);line-height:.98;font-weight:680;letter-spacing:-.035em;margin-bottom:26px}
@@ -519,7 +517,6 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .profile-id p{margin:2px 0 0;color:var(--text-2);font-size:14.5px}
 .adout{margin:0;padding:18px 20px;border-radius:9px;background:#0c0c0c;color:#cccccc;font:12.5px/1.65 var(--mono);white-space:pre;overflow:auto;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
-.profile .status{margin-top:18px;box-shadow:none;background:var(--sunken)}
 .about-copy p{font-size:17.5px;color:var(--text-2);margin:0 0 18px}
 .about-copy p:first-of-type{font-size:19.5px;color:var(--text)}
 .about-copy .sign{display:flex;align-items:center;gap:14px;margin-top:30px;font-size:14px;color:var(--text-3)}
@@ -612,73 +609,11 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .tb-btn[data-tip]:hover::before{content:attr(data-tip);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);padding:6px 10px;border-radius:5px;
   background:var(--acrylic-strong);border:1px solid var(--stroke);box-shadow:var(--shadow-fly);font:12px/1 var(--font);color:var(--text);white-space:nowrap;pointer-events:none;
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);animation:fadeIn .15s ease .35s both}
-.tb-status{display:inline-flex;align-items:center;gap:9px;height:40px;padding:0 12px;border-radius:5px;font-size:12.5px;color:var(--text-2);white-space:nowrap;overflow:hidden}
 .tb-cta{height:34px;padding:0 14px;margin-right:6px}
-.tb-tray{display:flex;align-items:center;gap:9px;height:40px;padding:0 10px;border-radius:5px;border:0;background:transparent;color:var(--text);cursor:pointer}
-.tb-tray .i{width:17px;height:17px}
-.tb-tray:hover,.tb-clock:hover,.tb-tray[aria-expanded="true"],.tb-clock[aria-expanded="true"]{background:var(--hover)}
-.tb-clock{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;height:40px;padding:0 10px;border-radius:5px;border:0;background:transparent;cursor:pointer;
+.tb-theme .i-sun{display:none}
+:root[data-theme="dark"] .tb-theme .i-sun{display:block}
+:root[data-theme="dark"] .tb-theme .i-moon{display:none}
   font:12px/1.35 var(--font);color:var(--text);text-align:right;white-space:nowrap}
-
-/* ===== flyouts: Start, Quick Settings, Calendar ===== */
-.fly{position:fixed;z-index:110;bottom:calc(var(--tb-h) + 12px);background:var(--acrylic-strong);border:1px solid var(--stroke);border-radius:9px;box-shadow:var(--shadow-fly);
-  backdrop-filter:blur(40px) saturate(1.6);-webkit-backdrop-filter:blur(40px) saturate(1.6);opacity:0;transform:translateY(24px);pointer-events:none;
-  transition:opacity .18s ease,transform .3s var(--ease)}
-.fly.open{opacity:1;transform:none;pointer-events:auto}
-.fly[hidden]{display:none}
-
-.start{left:50%;width:min(640px,calc(100vw - 24px));max-height:calc(100vh - var(--tb-h) - 24px);margin-left:calc(min(640px,calc(100vw - 24px)) / -2);display:flex;flex-direction:column;overflow:hidden}
-.start-in{padding:28px 32px 18px;overflow:auto;min-height:min(468px,calc(100vh - var(--tb-h) - 100px))}
-.start-search{position:relative;margin-bottom:26px}
-.start-search .i{position:absolute;left:14px;top:50%;margin-top:-9px;width:18px;height:18px;color:var(--text-2)}
-.start-search input{width:100%;height:40px;padding:0 14px 0 42px;border-radius:20px;border:1px solid var(--stroke);border-bottom-color:var(--field-line);background:var(--field);
-  font:14px/1 var(--font);color:var(--text)}
-.start-search input::placeholder{color:var(--text-3)}
-.start-search input:focus{outline:0;border-bottom:2px solid var(--accent)}
-.start-search input::-webkit-search-cancel-button{-webkit-appearance:none}
-.start-h{display:flex;justify-content:space-between;align-items:center;margin:0 4px 14px;font:600 14px/1 var(--font)}
-.pinned{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:24px}
-.pin{display:flex;flex-direction:column;align-items:center;gap:9px;padding:14px 4px 11px;border-radius:5px;text-decoration:none;font-size:12px;line-height:1.2;color:var(--text);text-align:center;border:0;background:none;cursor:pointer}
-.pin .app-ico{--s:34px}
-.pin:hover,.rec:hover,.res:hover,.res:focus-visible,.res.sel{background:var(--hover)}
-.recs{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-.rec,.res{display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:5px;text-decoration:none;color:var(--text);border:0;background:none;text-align:left;cursor:pointer;width:100%}
-.rec .app-ico,.res .app-ico{--s:32px}
-.rec b,.res b{display:block;font-size:13px;font-weight:600;line-height:1.3}
-.rec small,.res small{display:block;font-size:12px;color:var(--text-2);line-height:1.3}
-.res-ask .app-ico{background:var(--accent-soft);color:var(--accent-ink);box-shadow:none}
-.start-results{display:grid;gap:2px}
-.start-foot{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 32px 0 28px;border-top:1px solid var(--stroke);background:var(--sunken)}
-.me{display:flex;align-items:center;gap:12px;font-size:13px;padding:6px 10px;border-radius:5px}
-.power{position:relative}
-.icon-btn{width:40px;height:40px;display:grid;place-items:center;border-radius:5px;border:0;background:transparent;color:var(--text);cursor:pointer}
-.icon-btn:hover,.icon-btn[aria-expanded="true"]{background:var(--hover)}
-.power-menu{position:absolute;right:0;bottom:calc(100% + 6px);min-width:170px;padding:4px;border-radius:8px;background:var(--acrylic-strong);border:1px solid var(--stroke);box-shadow:var(--shadow-fly);
-  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px)}
-.power-menu button{display:flex;align-items:center;gap:12px;width:100%;padding:9px 12px;border:0;border-radius:4px;background:none;font-size:13.5px;color:var(--text);cursor:pointer;text-align:left}
-.power-menu button:hover,.power-menu button:focus-visible{background:var(--hover)}
-.power-menu .i{width:17px;height:17px}
-
-.qs,.cal{right:12px;width:min(360px,calc(100vw - 24px))}
-.qs-in{padding:18px}
-.qs-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.qs-tile{display:flex;flex-direction:column;align-items:center;gap:8px;border:0;background:none;padding:0;color:var(--text);font-size:12px;cursor:pointer}
-.qs-tile span:first-child{width:100%;height:50px;border-radius:6px;display:grid;place-items:center;background:var(--field);border:1px solid var(--stroke);transition:background-color .15s,color .15s}
-.qs-tile:hover span:first-child{background:var(--field-hover)}
-.qs-tile[aria-pressed="true"] span:first-child{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
-.qs-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--stroke);font-size:12.5px;color:var(--text-2);background:var(--sunken)}
-.qs-foot span{display:inline-flex;align-items:center;gap:8px}
-.qs-foot .i{width:18px;height:18px}
-.qs .btn{width:100%;margin-top:16px}
-.cal-in{padding:18px 18px 16px}
-.cal-today{font:600 14px/1.2 var(--font);margin-bottom:14px}
-.cal-m{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:600;margin-bottom:8px}
-.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:12.5px}
-.cal-g span{width:36px;height:36px;justify-self:center;display:grid;place-items:center;border-radius:50%}
-.cal-g .dow{height:26px;color:var(--text-3);font-size:12px}
-.cal-g .mute{color:var(--text-3);opacity:.5}
-.cal-g .now{background:var(--accent);color:var(--on-accent);font-weight:650}
-.cal .btn{width:100%;margin-top:14px}
 
 /* ===== toasts ===== */
 .toasts{position:fixed;right:12px;bottom:calc(var(--tb-h) + 12px);z-index:120;display:grid;gap:10px;width:min(364px,calc(100vw - 24px));pointer-events:none}
@@ -752,8 +687,7 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 
 /* ───────────── 7 · responsive ───────────── */
 @media (max-width:1180px){
-  .tb-status,.tb-cta{display:none}
-  .hero-top .status{display:inline-flex}
+  .tb-cta{display:none}
   .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:1000px){
@@ -777,7 +711,6 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
   .sec-head{margin-bottom:40px}
   .hero-top{padding-top:20px}
   .hero-main{padding-top:40px}
-  .hero-top .status{font-size:12px;padding:6px 12px 6px 10px}
   .hero h1{font-size:clamp(40px,11.5vw,56px)}
   .term-body{height:330px;font-size:12.5px;padding:10px 14px 14px}
   .term-tab{min-width:0}
@@ -802,23 +735,18 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
   .m-foot{padding:12px 16px 18px}
   .m-lbl{width:52px}
   .taskbar{grid-template-columns:minmax(0,1fr);padding:0 6px env(safe-area-inset-bottom)}
-  .tb-left,.tb-right,.tb-search,.tb-opt{display:none}
+  .tb-left,.tb-right,.tb-opt{display:none}
   .tb-mid{justify-content:space-around;width:100%;gap:0}
   .tb-btn{width:48px;height:46px}
   .tb-btn[data-tip]:hover::before{display:none}
-  .pinned{grid-template-columns:repeat(4,1fr)}
-  .recs{grid-template-columns:minmax(0,1fr)}
-  .start-in{padding:20px 18px 12px}
-  .start-foot{padding:0 18px}
   .foot-grid{grid-template-columns:minmax(0,1fr)}
   .profile{padding:26px 20px 22px}
   .avatar.lg{width:92px;height:92px;font-size:32px}
 }
 @media (max-width:420px){
   .cta-row .btn{width:100%}
-  .hero-top .status .long{display:none}
 }
-@media print{.taskbar,.fly,.toasts,.lock,.restart,.emu,.mica{display:none!important}body{padding:0}}
+@media print{.taskbar,.toasts,.lock,.restart,.emu,.mica{display:none!important}body{padding:0}}
 </style>
 <script>window.rcCaptchaReady=function(){window.__rcCaptcha=true};</script>
 <script src="https://www.google.com/recaptcha/api.js?onload=rcCaptchaReady&render=explicit" async defer></script>  
@@ -950,7 +878,6 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
     <a class="brand hero-brand boot-in" href="#home" aria-label="riva computech — home">
       <img class="blogo" src="logo.svg?v=2" alt="" />
     </a>
-    <span class="status boot-in" style="--d:80"><span class="dot"></span><span>Open to <span class="long">select </span>projects</span></span>
   </header>
 
   <div class="wrap hero-main">
@@ -1256,7 +1183,6 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
 <span class="c-h">Focus      </span> : Microsoft 365, Azure, infrastructure
 <span class="c-h">Languages  </span> : English, Gujarati
 <span class="c-h">Enabled    </span> : <span class="c-g">True</span></pre>
-      <span class="status"><span class="dot"></span>Open to select projects</span>
     </div>
     <div class="about-copy">
       <p class="kicker rv"><b>PS&gt;</b> Get-ADUser devik</p>
@@ -1376,13 +1302,11 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
 
 <!-- ════════════════ TASKBAR (site navigation) ════════════════ -->
 <nav class="taskbar" id="taskbar" aria-label="Site">
-  <div class="tb-left"><span class="tb-status"><span class="dot"></span>Open to select projects</span></div>
+  <div class="tb-left"></div>
   <div class="tb-mid">
-    <button class="tb-btn tb-start" id="start-btn" type="button" data-fly="start" aria-label="Start" aria-haspopup="dialog" aria-expanded="false" data-tip="Start">
+    <a class="tb-btn tb-start tb-app" href="#home" data-sec="home" aria-label="Home" data-tip="Home">
       <img class="bmark" src="favicon.svg?v=2" alt="" />
-    </button>
-    <button class="tb-btn tb-search" id="search-btn" type="button" data-fly="start" aria-label="Search" data-tip="Search"><svg class="i"><use href="#i-search"/></svg></button>
-    <a class="tb-btn tb-app" href="#home" data-sec="home" id="tb-term" aria-label="Terminal" data-tip="Terminal"><span class="app-ico ai-term"><svg class="i"><use href="#i-terminal"/></svg></span></a>
+    </a>
     <a class="tb-btn tb-app" href="#services" data-sec="services" aria-label="Services" data-tip="Services"><span class="app-ico ai-svc"><svg class="i"><use href="#i-briefcase"/></svg></span></a>
     <a class="tb-btn tb-app tb-opt" href="#why" data-sec="why" aria-label="Why Riva" data-tip="Why Riva"><span class="app-ico ai-why"><svg class="i"><use href="#i-chat"/></svg></span></a>
     <a class="tb-btn tb-app tb-opt" href="#automation" data-sec="automation" aria-label="Automation" data-tip="Automation"><span class="app-ico ai-code"><svg class="i"><use href="#i-code"/></svg></span></a>
@@ -1391,75 +1315,10 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
     <a class="tb-btn tb-app" href="#contact" data-sec="contact" aria-label="Contact" data-tip="Contact"><span class="app-ico ai-mail"><svg class="i"><use href="#i-mail"/></svg></span></a>
   </div>
   <div class="tb-right">
+    <button class="tb-btn tb-theme" id="theme-btn" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-tip="Switch to dark mode"><svg class="i i-moon"><use href="#i-moon"/></svg><svg class="i i-sun"><use href="#i-sun"/></svg></button>
     <a class="btn btn-accent btn-sm tb-cta" href="#contact">Book a free call</a>
-    <button class="tb-tray" id="qs-btn" type="button" data-fly="qs" aria-label="Quick settings" aria-haspopup="dialog" aria-expanded="false">
-      <svg class="i"><use href="#i-wifi"/></svg><svg class="i"><use href="#i-volume"/></svg><svg class="i"><use href="#i-battery"/></svg>
-    </button>
-    <button class="tb-clock" id="clock-btn" type="button" data-fly="cal" aria-label="Calendar" aria-haspopup="dialog" aria-expanded="false"><span id="clock-t">12:00 PM</span><span id="clock-d">1/1/2026</span></button>
   </div>
 </nav>
-
-<!-- Start menu -->
-<div class="fly start" id="start" role="dialog" aria-label="Start" hidden>
-  <div class="start-in">
-    <div class="start-search"><svg class="i"><use href="#i-search"/></svg><input id="start-q" type="search" placeholder="Search services, help and settings" aria-label="Search the site" autocomplete="off" spellcheck="false" /></div>
-    <div id="start-home">
-      <div class="start-h"><span>Pinned</span></div>
-      <div class="pinned">
-        <button class="pin" type="button" data-act="term"><span class="app-ico ai-term"><svg class="i"><use href="#i-terminal"/></svg></span>Terminal</button>
-        <a class="pin" href="#services"><span class="app-ico ai-svc"><svg class="i"><use href="#i-briefcase"/></svg></span>Services</a>
-        <a class="pin" href="#why"><span class="app-ico ai-why"><svg class="i"><use href="#i-chat"/></svg></span>Why Riva</a>
-        <a class="pin" href="#automation"><span class="app-ico ai-code"><svg class="i"><use href="#i-code"/></svg></span>Automation</a>
-        <a class="pin" href="#health"><span class="app-ico ai-health"><svg class="i"><use href="#i-shield"/></svg></span>Health check</a>
-        <a class="pin" href="#about"><span class="app-ico ai-about"><svg class="i"><use href="#i-user"/></svg></span>About Devik</a>
-        <a class="pin" href="#contact"><span class="app-ico ai-mail"><svg class="i"><use href="#i-mail"/></svg></span>Mail</a>
-        <button class="pin" type="button" data-act="settings"><span class="app-ico ai-set"><svg class="i"><use href="#i-sliders"/></svg></span>Settings</button>
-      </div>
-      <div class="start-h"><span>Recommended</span></div>
-      <div class="recs">
-        <a class="rec" href="#contact"><span class="app-ico ai-cal"><svg class="i"><use href="#i-calendar"/></svg></span><span><b>Book a free 30-min chat</b><small>No obligation</small></span></a>
-        <a class="rec" href="#health"><span class="app-ico ai-health"><svg class="i"><use href="#i-shield"/></svg></span><span><b>Run the IT health check</b><small>8 questions · about a minute</small></span></a>
-        <a class="rec" href="#automation"><span class="app-ico ai-code"><svg class="i"><use href="#i-code"/></svg></span><span><b>Offboard-User.ps1</b><small>Automation example</small></span></a>
-        <a class="rec" href="mailto:rivacomputech@gmail.com"><span class="app-ico ai-mail"><svg class="i"><use href="#i-mail"/></svg></span><span><b>Email Devik directly</b><small>rivacomputech@gmail.com</small></span></a>
-      </div>
-    </div>
-    <div id="start-results" class="start-results" hidden></div>
-  </div>
-  <div class="start-foot">
-    <span class="me"><span class="avatar sm" aria-hidden="true"><img src="devik.jpg" alt="" width="32" height="32" loading="lazy" /></span>Devik Patel</span>
-    <div class="power">
-      <button class="icon-btn" id="power-btn" type="button" aria-label="Power" aria-haspopup="menu" aria-expanded="false"><svg class="i"><use href="#i-power"/></svg></button>
-      <div class="power-menu" id="power-menu" role="menu" hidden>
-        <button type="button" role="menuitem" data-power="sleep"><svg class="i"><use href="#i-moon"/></svg>Sleep</button>
-        <button type="button" role="menuitem" data-power="shutdown"><svg class="i"><use href="#i-power"/></svg>Shut down</button>
-        <button type="button" role="menuitem" data-power="restart"><svg class="i"><use href="#i-refresh"/></svg>Restart</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Quick settings -->
-<div class="fly qs" id="qs" role="dialog" aria-label="Quick settings" hidden>
-  <div class="qs-in">
-    <div class="qs-tiles">
-      <button class="qs-tile" type="button" data-qs="theme" aria-pressed="false"><span><svg class="i"><use href="#i-moon"/></svg></span><span>Dark mode</span></button>
-      <button class="qs-tile" type="button" data-qs="motion" aria-pressed="false"><span><svg class="i"><use href="#i-motion"/></svg></span><span>Reduce motion</span></button>
-      <button class="qs-tile" type="button" data-qs="copy"><span><svg class="i"><use href="#i-copy"/></svg></span><span>Copy email</span></button>
-    </div>
-    <a class="btn btn-accent btn-sm" href="#contact">Book a free 30-min chat</a>
-  </div>
-  <div class="qs-foot"><span><svg class="i"><use href="#i-battery"/></svg>100% — available evenings &amp; weekends</span></div>
-</div>
-
-<!-- Calendar -->
-<div class="fly cal" id="cal" role="dialog" aria-label="Calendar" hidden>
-  <div class="cal-in">
-    <div class="cal-today" id="cal-today"></div>
-    <div class="cal-m"><span id="cal-month"></span></div>
-    <div class="cal-g" id="cal-grid"></div>
-    <a class="btn btn-accent btn-sm" href="#contact">Pick a time for a free chat</a>
-  </div>
-</div>
 
 <div class="toasts" id="toasts" aria-live="polite"></div>
 
@@ -1521,6 +1380,8 @@ function theme(){return root.getAttribute("data-theme")==="dark"?"dark":"light"}
 function syncSettings(){
   $$('[data-qs="theme"]').forEach(function(b){b.setAttribute("aria-pressed",theme()==="dark")});
   $$('[data-qs="motion"]').forEach(function(b){b.setAttribute("aria-pressed",reduced())});
+  var tb=$("#theme-btn");
+  if(tb){ var dk=theme()==="dark", lbl=dk?"Switch to light mode":"Switch to dark mode"; tb.setAttribute("aria-pressed",dk); tb.setAttribute("aria-label",lbl); tb.setAttribute("data-tip",lbl) }
   if(metaTheme) metaTheme.setAttribute("content",theme()==="dark"?"#11151b":"#edf1f7");
 }
 function setTheme(t,persist){root.setAttribute("data-theme",t); if(persist) store("rc-theme",t); syncSettings()}
@@ -1529,13 +1390,12 @@ var mqDark=matchMedia("(prefers-color-scheme: dark)");
 function onSys(){ if(!stored("rc-theme")) setTheme(mqDark.matches?"dark":"light") }
 mqDark.addEventListener?mqDark.addEventListener("change",onSys):mqDark.addListener(onSys);
 syncSettings();
+$("#theme-btn").addEventListener("click",function(){ setTheme(theme()==="dark"?"light":"dark",true) });
 
 /* ───────── clock ───────── */
-var clockT=$("#clock-t"), clockD=$("#clock-d"), lockTime=$("#lock-time"), lockDate=$("#lock-date");
+var lockTime=$("#lock-time"), lockDate=$("#lock-date");
 function tick(){
   var n=new Date();
-  clockT.textContent=n.toLocaleTimeString([],{hour:"numeric",minute:"2-digit"});
-  clockD.textContent=n.toLocaleDateString();
   lockTime.textContent=n.toLocaleTimeString([],{hour:"numeric",minute:"2-digit"}).replace(/\s?[AP]\.?M\.?$/i,"");
   lockDate.textContent=n.toLocaleDateString([],{weekday:"long",month:"long",day:"numeric"});
 }
@@ -1566,114 +1426,6 @@ d.addEventListener("click",function(e){
     el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
   }
 });
-
-/* ───────── flyouts (Start / Quick settings / Calendar) ───────── */
-var flys={start:$("#start"),qs:$("#qs"),cal:$("#cal")}, openFly=null, openBtn=null;
-function closeFly(focusBack){
-  if(!openFly) return; var p=openFly, b=openBtn; openFly=openBtn=null;
-  p.classList.remove("open"); $$('[data-fly]').forEach(function(x){x.setAttribute("aria-expanded","false")});
-  setTimeout(function(){ if(!p.classList.contains("open")) p.hidden=true },220);
-  if(p===flys.start){ powerMenu.hidden=true; powerBtn.setAttribute("aria-expanded","false") }
-  if(focusBack&&b) b.focus();
-}
-function openFlyout(name,btn){
-  var p=flys[name]; if(openFly===p){ closeFly(); return }
-  closeFly(); p.hidden=false; void p.offsetWidth; p.classList.add("open"); openFly=p; openBtn=btn;
-  if(btn) btn.setAttribute("aria-expanded","true");
-  if(name==="start"){ startQ.value=""; renderSearch(); setTimeout(function(){ if(btn&&btn.id==="search-btn"||matchMedia("(pointer:fine)").matches) startQ.focus({preventScroll:true}) },60) }
-  if(name==="cal") renderCal();
-}
-$$("[data-fly]").forEach(function(b){ b.addEventListener("click",function(e){ e.stopPropagation(); openFlyout(b.getAttribute("data-fly"),b) }) });
-d.addEventListener("pointerdown",function(e){ if(openFly&&!openFly.contains(e.target)&&!e.target.closest("[data-fly]")) closeFly() });
-d.addEventListener("keydown",function(e){ if(e.key==="Escape"&&openFly) closeFly(true) });
-Object.keys(flys).forEach(function(k){ flys[k].addEventListener("click",function(e){ if(e.target.closest('a[href]')) closeFly() }) });
-
-/* Start: search with an "Ask Devik" fallback */
-var startQ=$("#start-q"), startHome=$("#start-home"), startRes=$("#start-results");
-var INDEX=[
-  {t:"Terminal",s:"Interactive PowerShell",ico:"ai-term",i:"i-terminal",k:"powershell shell console cli command prompt",act:"term"},
-  {t:"Services",s:"Everything Riva Computech looks after",ico:"ai-svc",i:"i-briefcase",k:"services help support offer what",go:"#services"},
-  {t:"Microsoft 365",s:"Service",ico:"ai-svc",i:"i-cloud",k:"m365 office 365 o365 exchange outlook email sharepoint onedrive tenant licence license licensing",go:"#svc-m365"},
-  {t:"Azure & identity",s:"Service",ico:"ai-why",i:"i-id",k:"azure entra active directory ad identity group policy gpo hybrid sso cloud",go:"#svc-azure"},
-  {t:"Migrations",s:"Service",ico:"ai-code",i:"i-move",k:"migration migrate move tenant mailbox email data cutover merger acquisition",go:"#svc-migrate"},
-  {t:"Backup & continuity",s:"Service",ico:"ai-health",i:"i-backup",k:"backup restore recovery disaster dr bcdr continuity ransomware",go:"#svc-backup"},
-  {t:"Devices & security",s:"Service",ico:"ai-about",i:"i-laptop",k:"intune device devices mdm laptop security endpoint edr siem antivirus mfa bitlocker phishing",go:"#svc-security"},
-  {t:"Infrastructure & network",s:"Service",ico:"ai-set",i:"i-server",k:"server servers network firewall vpn vmware hyper-v hyperv citrix dns nas storage wifi domain",go:"#svc-infra"},
-  {t:"Why Riva",s:"Compared with a typical IT provider",ico:"ai-why",i:"i-chat",k:"why compare msp difference queue ticket",go:"#why"},
-  {t:"Automation",s:"Offboard-User.ps1",ico:"ai-code",i:"i-code",k:"automation automate script scripting powershell offboarding onboarding",go:"#automation"},
-  {t:"IT health check",s:"8 questions · about a minute",ico:"ai-health",i:"i-shield",k:"health check audit assessment score security quiz test",go:"#health"},
-  {t:"About Devik",s:"Owner & senior engineer",ico:"ai-about",i:"i-user",k:"about devik patel owner who experience gujarati",go:"#about"},
-  {t:"Contact",s:"Book a free 30-min chat",ico:"ai-mail",i:"i-mail",k:"contact book call email chat quote price pricing phone hire",go:"#contact"},
-  {t:"Dark mode",s:"Settings",ico:"ai-set",i:"i-moon",k:"dark light theme mode night",act:"theme"},
-  {t:"Reduce motion",s:"Settings",ico:"ai-set",i:"i-motion",k:"motion animation reduce accessibility",act:"motion"},
-  {t:"Lock",s:"Power",ico:"ai-set",i:"i-lock",k:"lock sleep screen",act:"lock"}
-];
-function icoHTML(it){return '<span class="app-ico '+it.ico+'"><svg class="i"><use href="#'+it.i+'"/></svg></span>'}
-function renderSearch(){
-  var v=startQ.value.trim().toLowerCase();
-  startHome.hidden=!!v; startRes.hidden=!v; if(!v){ startRes.innerHTML=""; return }
-  var words=v.split(/\s+/);
-  var hits=INDEX.filter(function(it){ var hay=(it.t+" "+it.s+" "+it.k).toLowerCase(); return words.every(function(w){return hay.indexOf(w)>-1}) }).slice(0,6);
-  var html='<div class="start-h"><span>'+(hits.length?"Best matches":"No exact match")+'</span></div>';
-  html+=hits.map(function(it){
-    var attrs=it.go?'href="'+it.go+'"':'href="#" data-act="'+it.act+'"';
-    return '<a class="res" '+attrs+'>'+icoHTML(it)+'<span><b>'+esc(it.t)+'</b><small>'+esc(it.s)+'</small></span></a>';
-  }).join("");
-  html+='<button class="res res-ask" type="button" data-ask="'+esc(startQ.value.trim())+'"><span class="app-ico"><svg class="i"><use href="#i-chat"/></svg></span><span><b>Ask Devik about “'+esc(startQ.value.trim())+'”</b><small>Starts a message with this as the subject</small></span></button>';
-  startRes.innerHTML=html;
-}
-startQ.addEventListener("input",renderSearch);
-startQ.addEventListener("keydown",function(e){
-  if(e.key==="Enter"){ var f=startRes.querySelector(".res"); if(f){ e.preventDefault(); f.click() } }
-  if(e.key==="ArrowDown"){ var r=startRes.querySelector(".res"); if(r){ e.preventDefault(); r.focus() } }
-});
-startRes.addEventListener("keydown",function(e){
-  var items=$$(".res",startRes), i=items.indexOf(d.activeElement); if(i<0) return;
-  if(e.key==="ArrowDown"){ e.preventDefault(); (items[i+1]||items[i]).focus() }
-  if(e.key==="ArrowUp"){ e.preventDefault(); i?items[i-1].focus():startQ.focus() }
-});
-flys.start.addEventListener("click",function(e){
-  var ask=e.target.closest("[data-ask]"); if(ask){ closeFly(); prefill({subject:ask.getAttribute("data-ask"),focus:"msg"}); return }
-  var a=e.target.closest("[data-act]"); if(a){ e.preventDefault(); closeFly(); runAct(a.getAttribute("data-act")) }
-});
-function runAct(act){
-  if(act==="term"){ openTerm(true); go("#home") }
-  else if(act==="theme") setTheme(theme()==="dark"?"light":"dark",true);
-  else if(act==="motion") setMotion(!reduced(),true);
-  else if(act==="lock") lockScreen();
-  else if(act==="settings") setTimeout(function(){ openFlyout("qs",$("#qs-btn")) },30);
-}
-
-/* Start: power menu */
-var powerBtn=$("#power-btn"), powerMenu=$("#power-menu");
-powerBtn.addEventListener("click",function(){ var o=powerMenu.hidden; powerMenu.hidden=!o; powerBtn.setAttribute("aria-expanded",o); if(o) powerMenu.querySelector("button").focus() });
-powerMenu.addEventListener("click",function(e){
-  var b=e.target.closest("[data-power]"); if(!b) return; var p=b.getAttribute("data-power"); closeFly();
-  if(p==="sleep") lockScreen();
-  if(p==="shutdown") toast("Shut down? Not today.","Riva Computech covers evenings, weekends and holidays.");
-  if(p==="restart") restart();
-});
-
-/* Quick settings */
-flys.qs.addEventListener("click",function(e){
-  var b=e.target.closest("[data-qs]"); if(!b) return; var k=b.getAttribute("data-qs");
-  if(k==="theme") setTheme(theme()==="dark"?"light":"dark",true);
-  if(k==="motion") setMotion(!reduced(),true);
-  if(k==="copy"){ copyEmail(); closeFly() }
-});
-
-/* Calendar */
-function renderCal(){
-  var n=new Date(), y=n.getFullYear(), m=n.getMonth(), first=new Date(y,m,1).getDay(), days=new Date(y,m+1,0).getDate(), prev=new Date(y,m,0).getDate();
-  $("#cal-today").textContent=n.toLocaleDateString([],{weekday:"long",month:"long",day:"numeric"});
-  $("#cal-month").textContent=n.toLocaleDateString([],{month:"long",year:"numeric"});
-  var h="", dows=["Su","Mo","Tu","We","Th","Fr","Sa"], i;
-  for(i=0;i<7;i++) h+='<span class="dow">'+dows[i]+'</span>';
-  for(i=first;i>0;i--) h+='<span class="mute">'+(prev-i+1)+'</span>';
-  for(i=1;i<=days;i++) h+='<span'+(i===n.getDate()?' class="now" aria-current="date"':'')+'>'+i+'</span>';
-  var tail=(7-(first+days)%7)%7; for(i=1;i<=tail;i++) h+='<span class="mute">'+i+'</span>';
-  $("#cal-grid").innerHTML=h;
-}
 
 /* ───────── lock screen + restart ───────── */
 var lock=$("#lock"), lockedAt=0;
@@ -1707,7 +1459,7 @@ function hlPS(src,cmdPos){
 }
 
 /* ═══════════ the terminal ═══════════ */
-var term=$("#term"), tbody=$("#term-body"), slot=$("#term-slot"), tbTerm=$("#tb-term");
+var term=$("#term"), tbody=$("#term-body"), slot=$("#term-slot");
 var PROMPT='<span class="t-ps">PS C:\\Riva&gt;</span> ';
 var hist=[], hIdx=0, inputRow=null, input=null, busy=false, typing=null, tabState=null;
 var NAMES=["Get-Service","Get-ADUser","Get-Help","Get-Command","Get-Date","Get-ChildItem","Test-ITHealth","Test-Connection","Invoke-Migration","Invoke-Automation","Start-Assessment","Send-MailMessage","Set-Location","Clear-Host","Stop-Computer","Restart-Computer","book","help","whoami","cls","exit"];
@@ -1851,18 +1603,16 @@ function closeTerm(how){
   term.classList.remove("opening"); term.classList.add(cls);
   setTimeout(function(){
     term.classList.remove(cls); slot.classList.add("closed"); termState=how==="min"?"min":"closed";
-    tbTerm.classList.toggle("stopped",termState==="closed");
   },reduced()?0:how==="min"?320:180);
 }
 function openTerm(focus){
   if(termState!=="open"){
-    slot.classList.remove("closed"); tbTerm.classList.remove("stopped"); termState="open";
+    slot.classList.remove("closed"); termState="open";
     tx=ty=0; term.style.transform=""; term.classList.remove("opening"); void term.offsetWidth; term.classList.add("opening");
   }
   if(focus&&input) setTimeout(function(){ input.focus({preventScroll:true}) },reduced()?0:350);
 }
 $("#desk-ico").addEventListener("click",function(){ openTerm(true) });
-tbTerm.addEventListener("click",function(){ if(termState!=="open") openTerm(true) });
 var bar=$("#term-bar");
 bar.addEventListener("dblclick",function(e){ if(e.target.closest("button")) return; tx=ty=0; term.style.transform=""; maximize(term) });
 bar.addEventListener("pointerdown",function(e){
@@ -1896,7 +1646,7 @@ d.addEventListener("click",function(e){
 });
 $$(".win .win-bar").forEach(function(b){ b.addEventListener("dblclick",function(e){ if(!e.target.closest("button")) maximize(b.closest(".win")) }) });
 d.addEventListener("animationend",function(e){ if(e.animationName==="winBounce") e.target.classList.remove("bounce") });
-d.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!openFly){ var m=$(".is-max"); if(m) unmax(m) } });
+d.addEventListener("keydown",function(e){ if(e.key==="Escape"){ var m=$(".is-max"); if(m) unmax(m) } });
 
 /* ═══════════ automation: highlighted script + a run you can watch ═══════════ */
 var code=$("#ed-code code");
