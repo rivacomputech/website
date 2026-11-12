@@ -566,6 +566,12 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .m-sent h3{font-size:26px;font-weight:650;margin-bottom:8px}
 .m-sent p{margin:0 auto 26px;max-width:36ch;color:var(--text-2)}
 @keyframes pop{from{transform:scale(.4);opacity:0}}
+.m-captcha{padding:10px 22px 0;min-height:88px}
+.m-captcha > div{max-width:100%}
+@media (max-width:420px){
+  .m-captcha{padding:10px 16px 0;height:78px}
+  .m-captcha > div{transform:scale(.85);transform-origin:0 0}
+}
 
 /* ===== FOOTER ===== */
 .foot{padding:72px 0 40px;border-top:1px solid var(--stroke)}
@@ -809,6 +815,8 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 }
 @media print{.taskbar,.fly,.toasts,.lock,.restart,.emu,.mica{display:none!important}body{padding:0}}
 </style>
+<script>window.rcCaptchaReady=function(){window.__rcCaptcha=true};</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=rcCaptchaReady&render=explicit" async defer></script>  
 </head>
 <body>
 <a class="skip" href="#services">Skip to content</a>
@@ -1295,11 +1303,10 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
       </div>
       <!-- TODO(Devik): create a form at https://formspree.io and replace YOUR_FORMSPREE_ID below (e.g. action="https://formspree.io/f/xyzabcd").
            Until then, Send opens the visitor's email app with the message pre-filled. -->
-      <form id="contact-form" action="https://formspree.io/f/xvkkjper" method="POST">
-        <input type="hidden" name="_subject" value="New enquiry from rivacomputech.com" />
-        <input type="hidden" name="_next" value="https://rivacomputech.com" />
+      <form id="contact-form" action="https://formspree.io/f/xvkkjper" method="POST" novalidate>
+        <input type="hidden" name="_subject" id="f-_subject" value="New enquiry from rivacomputech.com" />
         <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="g-recaptcha" data-sitekey="6LdZtBouAAAAAOg51LLcC_6tTyClb6h255AvaIp2"></div>
+      
         <div class="m-row"><span class="m-lbl">To</span><span class="m-to"><span class="avatar xs" aria-hidden="true">DP</span><span>Devik Patel <em>&lt;rivacomputech@gmail.com&gt;</em></span></span></div>
         <div class="m-row m-from">
           <label class="m-lbl" for="f-name">From</label>
@@ -1316,6 +1323,10 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
           <button class="chip" type="button" aria-pressed="false">Automation</button>
         </div>
         <div class="m-msg"><label class="sr-only" for="f-msg">Message</label><textarea class="field" id="f-msg" name="message" rows="7" required placeholder="What are you running, and what's giving you trouble?"></textarea></div>
+      
+        <!-- reCAPTCHA v2 checkbox is rendered here by JS -->
+        <div class="m-captcha"><div id="captcha"></div></div>
+      
         <div class="m-foot">
           <span id="form-status" role="status" aria-live="polite"></span>
           <button class="btn btn-accent" type="submit" id="send-btn"><svg class="i"><use href="#i-send"/></svg><span>Send</span></button>
@@ -1958,27 +1969,49 @@ function prefill(o){
     f.focus({preventScroll:true});
   },reduced()?0:650);
 }
+/* ── reCAPTCHA (explicit render so it matches the site theme) ── */
+var CAPTCHA_KEY="6LdZtBouAAAAAOg51LLcC_6tTyClb6h255AvaIp2";
+var captchaBox=$("#captcha"), captchaId=null, captchaReady=!!window.__rcCaptcha;
+function renderCaptcha(){
+  if(!captchaReady||!window.grecaptcha||!grecaptcha.render) return;
+  captchaBox.innerHTML="";
+  captchaId=grecaptcha.render(captchaBox,{sitekey:CAPTCHA_KEY,theme:theme()});
+}
+function resetCaptcha(){ try{ if(captchaId!==null) grecaptcha.reset(captchaId) }catch(_){} }
+function captchaToken(){ try{ return captchaId!==null?grecaptcha.getResponse(captchaId):"" }catch(_){ return "" } }
+window.rcCaptchaReady=function(){ captchaReady=true; renderCaptcha() };
+if(captchaReady) renderCaptcha();
+/* re-render when the visitor switches light/dark */
+new MutationObserver(renderCaptcha).observe(root,{attributes:true,attributeFilter:["data-theme"]});
+
+/* ── submit ── */
+function setStatus(cls,msg){ status.className=cls; status.textContent=msg }
 form.addEventListener("submit",function(e){
-  e.preventDefault(); status.className=""; status.textContent="";
-  if(!form.checkValidity()){ status.className="err"; status.textContent="Please add your name, email and a message."; form.reportValidity(); return }
-  var action=form.getAttribute("action");
-  if(!action||action.indexOf("YOUR_FORMSPREE_ID")>-1){
-    var body=fMsg.value+"\n\n— "+fName.value+" ("+fEmail.value+")";
-    window.location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent(fSubj.value||"Enquiry from rivacomputech.com")+"&body="+encodeURIComponent(body);
-    status.className="ok"; status.textContent="Opening your email app…"; return;
-  }
+  e.preventDefault(); setStatus("","");
+
+  if(!form.checkValidity()){ setStatus("err","Please add your name, email and a message."); form.reportValidity(); return }
+  if(!captchaToken()){ setStatus("err","Please tick “I’m not a robot” before sending."); return }
+
+  $("#f-_subject").value="New enquiry: "+(fSubj.value.trim()||"rivacomputech.com");
+
   sendBtn.disabled=true; sendBtn.querySelector("span").textContent="Sending…";
-  fetch(action,{method:"POST",headers:{"Accept":"application/json"},body:new FormData(form)})
+  fetch(form.getAttribute("action"),{method:"POST",headers:{"Accept":"application/json"},body:new FormData(form)})
     .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,body:j}}) })
     .then(function(res){
-      if(res.ok&&res.body.ok!==false){ form.reset(); lastPrefill=""; chips.forEach(function(x){x.setAttribute("aria-pressed","false")});
-        form.hidden=true; $("#m-sent").hidden=false; toast("Message sent","Devik will reply within one business day.") }
-      else { status.className="err"; status.textContent=(res.body.errors&&res.body.errors.map(function(x){return x.message}).join(", "))||"Something went wrong — please email "+EMAIL+"." }
+      if(res.ok&&res.body.ok!==false){
+        form.reset(); lastPrefill=""; chips.forEach(function(x){x.setAttribute("aria-pressed","false")});
+        resetCaptcha();
+        form.hidden=true; $("#m-sent").hidden=false;
+        toast("Message sent","Devik will reply within one business day.");
+      } else {
+        resetCaptcha();
+        setStatus("err",(res.body.errors&&res.body.errors.map(function(x){return x.message}).join(", "))||"Something went wrong — please email "+EMAIL+".");
+      }
     })
-    .catch(function(){ status.className="err"; status.textContent="Network error — please email "+EMAIL+"." })
+    .catch(function(){ resetCaptcha(); setStatus("err","Network error — please email "+EMAIL+".") })
     .then(function(){ sendBtn.disabled=false; sendBtn.querySelector("span").textContent="Send" });
 });
-$("#m-again").addEventListener("click",function(){ $("#m-sent").hidden=true; form.hidden=false; fName.focus() });
+$("#m-again").addEventListener("click",function(){ $("#m-sent").hidden=true; form.hidden=false; renderCaptcha(); fName.focus() });
 
 /* ═══════════ easter eggs ═══════════ */
 function typingInField(t){ return t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.isContentEditable) }
