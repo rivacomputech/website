@@ -1974,9 +1974,11 @@ function prefill(o){
 var CAPTCHA_KEY="6LdZtBouAAAAAOg51LLcC_6tTyClb6h255AvaIp2";
 var captchaBox=$("#captcha"), captchaId=null, captchaReady=!!window.__rcCaptcha;
 function renderCaptcha(){
-  if(!captchaReady||!window.grecaptcha||!grecaptcha.render) return;
+  if(!captchaReady||!window.grecaptcha||!grecaptcha.render||form.hidden) return;
+  /* reCAPTCHA refuses to render twice into the same element, so give every render a fresh one */
   captchaBox.innerHTML="";
-  captchaId=grecaptcha.render(captchaBox,{sitekey:CAPTCHA_KEY,theme:theme()});
+  var host=d.createElement("div"); captchaBox.appendChild(host);
+  try{ captchaId=grecaptcha.render(host,{sitekey:CAPTCHA_KEY,theme:theme()}) }catch(_){ captchaId=null }
 }
 function resetCaptcha(){ try{ if(captchaId!==null) grecaptcha.reset(captchaId) }catch(_){} }
 function captchaToken(){ try{ return captchaId!==null?grecaptcha.getResponse(captchaId):"" }catch(_){ return "" } }
