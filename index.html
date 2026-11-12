@@ -24,8 +24,8 @@
 <meta property="og:image" content="https://rivacomputech.com/og.png" />
 <meta name="twitter:card" content="summary_large_image" />
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="icon" href="favicon.svg?v=2" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2" />
 
 <!-- Theme + motion are decided before first paint so there's no flash. -->
 <script>
@@ -309,6 +309,7 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .brand{display:inline-flex;align-items:center;gap:13px;color:var(--text);text-decoration:none;line-height:1}
 .brand .bmark{width:46px;height:46px;flex:none}
 .brand .bword{height:44px;width:auto}
+.brand .blogo{height:72px;width:auto}
 .hero-brand{--blink:curblink}
 @keyframes curblink{50%{opacity:0}}
 .status{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--stroke);
@@ -578,6 +579,7 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
 .foot .brand .bmark{width:38px;height:38px}
 .foot .brand .bword{height:36px}
+.foot .brand .blogo{height:60px}
 .foot p{margin:16px 0 0;max-width:34ch;color:var(--text-2);font-size:14.5px}
 .foot h4{font:600 12px/1 var(--font);text-transform:uppercase;letter-spacing:.08em;color:var(--text-3);margin-bottom:14px}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -943,7 +945,7 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
   <svg class="wall" aria-hidden="true" focusable="false"><use href="#wall" width="100%" height="100%"/></svg>
   <header class="wrap hero-top">
     <a class="brand hero-brand boot-in" href="#home" aria-label="riva computech — home">
-      <svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><use href="#rivaMarkG"/></svg><svg class="bword" viewBox="6.2 -51.88 180.24 87.56" aria-hidden="true"><use href="#rivaWordG"/></svg>
+      <img class="blogo" src="logo.svg?v=2" alt="" />
     </a>
     <span class="status boot-in" style="--d:80"><span class="dot"></span><span>Open to <span class="long">select </span>projects</span></span>
   </header>
@@ -1350,7 +1352,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
     <div class="foot-grid">
       <div>
         <a class="brand" href="#home" aria-label="Riva Computech — back to top">
-          <svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><use href="#rivaMarkG"/></svg><svg class="bword" viewBox="6.2 -51.88 180.24 87.56" aria-hidden="true"><use href="#rivaWordG"/></svg>
+          <img class="blogo" src="logo.svg?v=2" alt="" />
         </a>
         <p>Senior Microsoft 365, Azure &amp; infrastructure help — direct from the engineer doing the work.</p>
       </div>
@@ -1375,7 +1377,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
   <div class="tb-left"><span class="tb-status"><span class="dot"></span>Open to select projects</span></div>
   <div class="tb-mid">
     <button class="tb-btn tb-start" id="start-btn" type="button" data-fly="start" aria-label="Start" aria-haspopup="dialog" aria-expanded="false" data-tip="Start">
-      <svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><use href="#rivaMarkG"/></svg>
+      <img class="bmark" src="favicon.svg?v=2" alt="" />
     </button>
     <button class="tb-btn tb-search" id="search-btn" type="button" data-fly="start" aria-label="Search" data-tip="Search"><svg class="i"><use href="#i-search"/></svg></button>
     <a class="tb-btn tb-app" href="#home" data-sec="home" id="tb-term" aria-label="Terminal" data-tip="Terminal"><span class="app-ico ai-term"><svg class="i"><use href="#i-terminal"/></svg></span></a>
@@ -1464,7 +1466,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
   <svg class="wall" aria-hidden="true" focusable="false"><use href="#wall" width="100%" height="100%"/></svg>
   <div class="lock-time" id="lock-time">12:00</div>
   <div class="lock-date" id="lock-date"></div>
-  <div class="lock-card"><svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><use href="#rivaMarkG"/></svg><span><b>Senior Microsoft 365, Azure &amp; infrastructure help</b><small>Still available — evenings, weekends &amp; holidays.</small></span></div>
+  <div class="lock-card"><img class="bmark" src="favicon.svg?v=2" alt="" /><span><b>Senior Microsoft 365, Azure &amp; infrastructure help</b><small>Still available — evenings, weekends &amp; holidays.</small></span></div>
   <div class="lock-hint">Click or press any key to unlock</div>
 </div>
 <div class="restart" id="restart" hidden><div class="spin" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><span>Restarting</span></div>
@@ -1491,7 +1493,7 @@ function go(target){var el=typeof target==="string"?$(target):target; if(el) el.
 function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function stored(k){try{return localStorage.getItem(k)}catch(e){return null}}
 var EMAIL="rivacomputech@gmail.com";
-var LOGO='<svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><use href="#rivaMarkG"/></svg>';
+var LOGO='<img class="bmark" src="favicon.svg?v=2" alt="" />';
 $("#year").textContent=new Date().getFullYear();
 
 /* ───────── toasts ───────── */
