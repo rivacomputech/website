@@ -533,14 +533,24 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .steps span{color:var(--text-2);font-size:14.5px}
 .direct{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
 .direct-row > div{min-width:0}
-.direct-row a{overflow-wrap:anywhere}
+.direct-row a{overflow-wrap:break-word}
 .direct-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:9px;background:var(--surface);border:1px solid var(--stroke)}
 .direct-row .i{color:var(--accent-ink)}
 .direct-row small{display:block;font-size:12.5px;color:var(--text-3);line-height:1.3}
 .direct-row a,.direct-row span.v{font-weight:600;font-size:15px;text-decoration:none;color:var(--text)}
 .direct-row a:hover{color:var(--accent-ink)}
 .direct-row .copy{margin-left:auto}
+.hrs{display:block}.hrs-l{display:block;line-height:1.5}.hrs-l i{display:inline-block;min-width:76px;font-style:normal;font-weight:500;color:var(--text-2)}
+.hrs em{display:block;font-style:normal;font-weight:400;font-size:13.5px;line-height:1.45;color:var(--text-2);margin-top:4px}
+@media (max-width:480px){.direct-row{padding:12px 12px;gap:10px}.direct-row a,.direct-row span.v{font-size:14px}.direct-row .copy{padding-left:10px;padding-right:10px}}
 .mail form{padding:6px 0 0}
+.avail{padding:14px 22px 14px;border-bottom:1px solid var(--stroke);background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.avail-h{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--text)}
+.avail-h .i{width:17px;height:17px;color:var(--accent);flex:none}
+.avail-h b{font-weight:650}.avail-h span{font-weight:500;color:var(--text-2)}
+.avail ul{list-style:none;margin:10px 0 8px;padding:0;display:flex;flex-wrap:wrap;gap:6px 26px;font-size:14.5px;font-weight:600;color:var(--text)}
+.avail li span{display:inline-block;min-width:78px;font-weight:500;color:var(--text-2)}
+.avail p{margin:0;font-size:13.5px;line-height:1.45;color:var(--text-2)}
 .m-row{display:flex;align-items:center;gap:12px;padding:10px 22px;border-bottom:1px solid var(--stroke)}
 .m-lbl{flex:none;width:64px;font-size:14px;color:var(--text-3)}
 .m-to{display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:var(--accent-soft);font-size:14px;font-weight:600;min-width:0}
@@ -550,10 +560,6 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .m-row .field:hover{background:var(--hover)}
 .m-row .field:focus{background:var(--field);border-color:var(--stroke);border-bottom:2px solid var(--accent);padding-bottom:7px}
 .m-from{display:grid;grid-template-columns:64px 1fr 1fr;gap:8px 12px}
-.m-chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 22px 4px}
-.chip{height:30px;padding:0 13px;border-radius:999px;border:1px solid var(--stroke-2);background:var(--surface);font:500 13px/1 var(--font);color:var(--text-2);cursor:pointer;transition:all .15s}
-.chip:hover{border-color:var(--accent);color:var(--accent-ink)}
-.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .m-msg{padding:12px 22px 4px}
 .m-foot{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;padding:12px 22px 22px}
 #form-status{margin-right:auto;font-size:14px;font-weight:600}
@@ -728,13 +734,15 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
   .hc-row{padding:12px 14px;gap:12px}
   .hc-ico{display:none}
   .m-row{padding:10px 16px}
+  .avail{padding:14px 16px}
+  .avail ul{flex-direction:column;gap:4px}
   .m-to{max-width:100%;border-radius:18px}
   .m-to > span:last-child{white-space:normal;overflow:visible;overflow-wrap:break-word;line-height:1.25}
   .m-to em{display:block;font-size:12px;letter-spacing:-.005em}
   .m-row .m-lbl{min-width:44px;width:44px}
   .m-from{grid-template-columns:minmax(0,1fr)}
   .m-from .m-lbl{display:none}
-  .m-chips,.m-msg{padding-left:16px;padding-right:16px}
+  .m-msg{padding-left:16px;padding-right:16px}
   .m-foot{padding:12px 16px 18px}
   .m-lbl{width:52px}
   .taskbar{grid-template-columns:minmax(0,1fr);padding:0 6px env(safe-area-inset-bottom)}
@@ -887,9 +895,9 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
     <div class="hero-copy">
       <p class="kicker boot-in" style="--d:120">Microsoft 365 · Azure · Infrastructure</p>
       <h1 class="boot-in" style="--d:180"><span class="nw">Senior-level</span> IT.<br><span class="hl">No ticket queue.</span></h1>
-      <p class="lede boot-in" style="--d:260">Senior Microsoft 365, Azure and infrastructure support — direct from the engineer who does the work. No ticket queues, no hand-offs, and cover across evenings, weekends and holidays.</p>
+      <p class="lede boot-in" style="--d:260">Senior Microsoft 365, Azure and infrastructure support — direct from the engineer who does the work. No ticket queues, no hand-offs, and cover across evenings and weekends.</p>
       <div class="cta-row boot-in" style="--d:340">
-        <a class="btn btn-accent" href="#contact">Book a free 30-min chat <svg class="i arr"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-accent" href="#contact">Request a free 30-min call <svg class="i arr"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-std" href="#services">See services</a>
       </div>
       <ul class="hero-meta boot-in" style="--d:420">
@@ -1035,7 +1043,7 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
         <div class="cmp-c us"><svg class="i"><use href="#i-check"/></svg><span><b>The same senior engineer every time</b>, who already knows your setup</span></div>
 
         <div class="cmp-c them"><svg class="i"><use href="#i-x"/></svg><span>Business hours, then voicemail</span></div>
-        <div class="cmp-c us"><svg class="i"><use href="#i-check"/></svg><span><b>Evenings, weekends and holidays</b> — handy when your team spans time zones</span></div>
+        <div class="cmp-c us"><svg class="i"><use href="#i-check"/></svg><span><b>Evenings and weekends</b> — handy when your team spans time zones</span></div>
 
         <div class="cmp-c them"><svg class="i"><use href="#i-x"/></svg><span>Juniors learning on your systems</span></div>
         <div class="cmp-c us"><svg class="i"><use href="#i-check"/></svg><span><b>10+ years of hands-on</b> Microsoft and infrastructure work</span></div>
@@ -1192,7 +1200,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
       <div class="sec-head" style="margin-bottom:28px"><h2 class="rv">Hi, I'm Devik.</h2></div>
       <p class="rv">I'm the engineer behind Riva Computech — and the person you'll actually work with.</p>
       <p class="rv">I've spent more than ten years in hands-on IT: help desk, Windows Server, virtualization and, these days, a lot of Microsoft 365 and Azure. I keep a deliberately small client list, so I know your setup, you get a direct line to me, and the person who scopes the job is the person who does it.</p>
-      <p class="rv">My hours are flexible, too — evenings, weekends and holidays — which helps when your team spans time zones.</p>
+      <p class="rv">My hours are flexible, too — evenings and weekends — which helps when your team spans time zones.</p>
       <!-- TODO(Devik): confirm you're happy sharing where the name comes from. -->
       <p class="rv">At Riva Computech, my focus as founder is simple: efficiency, practical solutions, and working smarter. If a job needs doing twice, I'll probably write a PowerShell script for it.</p>
       <div class="sign rv"><span class="avatar sm" aria-hidden="true"><img src="devik.jpg" alt="" width="32" height="32" loading="lazy" /></span><span><b>Devik Patel</b>Owner, Riva Computech</span></div>
@@ -1207,20 +1215,20 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
       <div class="sec-head" style="margin-bottom:40px">
         <p class="kicker rv"><b>PS&gt;</b> Send-MailMessage</p>
         <h2 class="rv">Let's scope your project.</h2>
-        <p class="rv">Tell us what you're running and what's giving you trouble. You'll get a straight answer from Devik — usually within one business day.</p>
+        <p class="rv">Tell us what you're running and what's giving you trouble. You'll get a straight answer from Devik — as soon as he can, usually within a few hours.</p>
       </div>
       <ol class="steps rv">
         <li><div><b>Send a message</b><span>A couple of lines is plenty.</span></div></li>
-        <li><div><b>Free 30-minute chat</b><span>We talk through your setup and what's bugging you.</span></div></li>
+        <li><div><b>Free 30-minute call</b><span>We talk through your setup and what's bugging you.</span></div></li>
         <li><div><b>A clear plan</b><span>What needs doing, in what order, and what it'll cost.</span></div></li>
         <li><div><b>The work gets done</b><span>By the same engineer you spoke to, start to finish.</span></div></li>
       </ol>
       <div class="direct rv">
-        <div class="direct-row"><svg class="i"><use href="#i-mail"/></svg><div><small>Email</small><a href="mailto:devik.patel@rivacomputech.com">devik.patel@rivacomputech.com</a></div>
+        <div class="direct-row"><svg class="i"><use href="#i-mail"/></svg><div><small>Email</small><a href="mailto:devik.patel@rivacomputech.com">devik.patel<wbr>@rivacomputech.com</a></div>
           <button class="btn btn-std btn-sm copy" type="button" data-copy="devik.patel@rivacomputech.com"><svg class="i"><use href="#i-copy"/></svg>Copy</button></div>
         <!-- TODO(Devik): add your phone number here (and in the JSON-LD) -->
         <div class="direct-row"><svg class="i"><use href="#i-phone"/></svg><div><small>Phone</small><span class="v">+1 (313) 405-7164</span></div></div>
-        <div class="direct-row"><svg class="i"><use href="#i-clock"/></svg><div><small>Hours</small><span class="v">Weekdays, evenings, weekends &amp; holidays</span></div></div>
+        <div class="direct-row"><svg class="i"><use href="#i-clock"/></svg><div><small>Hours</small><span class="v hrs"><span class="hrs-l"><i>Mon – Fri</i> 4:00 PM – 9:00 PM</span><span class="hrs-l"><i>Sat &amp; Sun</i> 11:00 AM – 3:00 PM</span><em>Eastern Time. Another time? Just ask — I'll do my best, depending on availability.</em></span></div></div>
       </div>
     </div>
 
@@ -1239,6 +1247,14 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
       <form id="contact-form" action="https://formspree.io/f/xvkkjper" method="POST" novalidate>
         <input type="hidden" name="_subject" id="f-_subject" value="New enquiry from rivacomputech.com" />
         <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="avail" role="note" aria-label="Best times for a call">
+          <div class="avail-h"><svg class="i"><use href="#i-clock"/></svg><b>Best times for a call <span>(Eastern Time)</span></b></div>
+          <ul>
+            <li><span>Mon – Fri</span>4:00 PM – 9:00 PM</li>
+            <li><span>Sat &amp; Sun</span>11:00 AM – 3:00 PM</li>
+          </ul>
+          <p>Another time? Just ask — I'll do my best, depending on availability.</p>
+        </div>
       
         <div class="m-row"><span class="m-lbl">To</span><span class="m-to"><span class="avatar xs" aria-hidden="true"><img src="devik.jpg" alt="" width="22" height="22" loading="lazy" /></span><span>Devik Patel <em>&lt;devik.patel<wbr>@rivacomputech.com&gt;</em></span></span></div>
         <div class="m-row m-from">
@@ -1246,16 +1262,9 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
           <input class="field" id="f-name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
           <input class="field" id="f-email" name="email" type="email" placeholder="you@company.com" required autocomplete="email" aria-label="Your email" />
         </div>
-        <div class="m-row"><label class="m-lbl" for="f-subject">Subject</label><input class="field" id="f-subject" name="enquiry_subject" type="text" placeholder="Tenant migration, M365 setup, backups…" /></div>
-        <div class="m-chips" role="group" aria-label="Quick subjects">
-          <button class="chip" type="button" aria-pressed="false">Migration</button>
-          <button class="chip" type="button" aria-pressed="false">Microsoft 365 setup</button>
-          <button class="chip" type="button" aria-pressed="false">Backup &amp; recovery</button>
-          <button class="chip" type="button" aria-pressed="false">Security</button>
-          <button class="chip" type="button" aria-pressed="false">Infrastructure</button>
-          <button class="chip" type="button" aria-pressed="false">Automation</button>
-        </div>
-        <div class="m-msg"><label class="sr-only" for="f-msg">Message</label><textarea class="field" id="f-msg" name="message" rows="7" required placeholder="What are you running, and what's giving you trouble?"></textarea></div>
+        <div class="m-row"><label class="m-lbl" for="f-subject">Subject</label><input class="field" id="f-subject" name="enquiry_subject" type="text" placeholder="What do you need? Migration, M365, backups, security…" /></div>
+        <div class="m-row"><label class="m-lbl" for="f-when">When</label><input class="field" id="f-when" name="preferred_time" type="text" placeholder="Day &amp; time (ET), optional" autocomplete="off" /></div>
+        <div class="m-msg"><label class="sr-only" for="f-msg">Message</label><textarea class="field" id="f-msg" name="message" rows="9" required placeholder="Tell me a bit about your setup so I can come prepared:&#10;• What you're running (Microsoft 365, Azure, servers, devices…)&#10;• Roughly how many users or devices&#10;• What's not working, or what you'd like to change&#10;• Any deadline or urgency"></textarea></div>
       
         <!-- reCAPTCHA v2 checkbox is rendered here by JS -->
         <div class="m-captcha"><div id="captcha"></div></div>
@@ -1268,7 +1277,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
       <div class="m-sent" id="m-sent" hidden>
         <div class="tick"><svg class="i"><use href="#i-check"/></svg></div>
         <h3>Message sent</h3>
-        <p>Thanks — Devik will reply within one business day, usually sooner.</p>
+        <p>Thanks — Devik will get back to you as soon as he can, usually within a few hours.</p>
         <button class="btn btn-std" type="button" id="m-again">Write another</button>
       </div>
     </div>
@@ -1293,7 +1302,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
       </nav>
       <div>
         <h4>Get in touch</h4>
-        <ul><li><a href="#contact">Book a free 30-min chat</a></li><li><a href="mailto:devik.patel@rivacomputech.com">devik.patel@rivacomputech.com</a></li></ul>
+        <ul><li><a href="#contact">Request a free 30-min call</a></li><li><a href="mailto:devik.patel@rivacomputech.com">devik.patel@rivacomputech.com</a></li></ul>
       </div>
     </div>
     <div class="legal">
@@ -1319,7 +1328,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
   </div>
   <div class="tb-right">
     <button class="tb-btn tb-theme" id="theme-btn" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-tip="Switch to dark mode"><svg class="i i-moon"><use href="#i-moon"/></svg><svg class="i i-sun"><use href="#i-sun"/></svg></button>
-    <a class="btn btn-accent btn-sm tb-cta" href="#contact">Book a free call</a>
+    <a class="btn btn-accent btn-sm tb-cta" href="#contact">Request a free 30-min call</a>
   </div>
 </nav>
 
@@ -1330,7 +1339,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
   <svg class="wall" aria-hidden="true" focusable="false"><use href="#wall" width="100%" height="100%"/></svg>
   <div class="lock-time" id="lock-time">12:00</div>
   <div class="lock-date" id="lock-date"></div>
-  <div class="lock-card"><img class="bmark" src="favicon.svg?v=2" alt="" /><span><b>Senior Microsoft 365, Azure &amp; infrastructure help</b><small>Still available — evenings, weekends &amp; holidays.</small></span></div>
+  <div class="lock-card"><img class="bmark" src="favicon.svg?v=2" alt="" /><span><b>Senior Microsoft 365, Azure &amp; infrastructure help</b><small>Still available — evenings &amp; weekends.</small></span></div>
   <div class="lock-hint">Click or press any key to unlock</div>
 </div>
 <div class="restart" id="restart" hidden><div class="spin" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><span>Restarting</span></div>
@@ -1484,7 +1493,7 @@ var CMD={
   help:function(){
     tline(""); tline("Name               Synopsis","pre c-h"); tline("----               --------","pre c-h");
     [["Get-Service","What Riva Computech looks after"],["Get-ADUser devik","Who you'll be working with"],["Test-ITHealth","The one-minute health check"],
-     ["Invoke-Migration","Watch a (simulated) migration"],["Invoke-Automation","See a real automation script"],["book","Book a free 30-min chat"],
+     ["Invoke-Migration","Watch a (simulated) migration"],["Invoke-Automation","See a real automation script"],["book","Request a free 30-min call"],
      ["Get-Date","What time is it?"],["cls","Clear the screen"]].forEach(function(r){
       var pad=r[0]+"                   ".slice(r[0].length);
       tline('<span class="c-y">'+esc(pad)+'</span>'+esc(r[1]),"pre");
@@ -1512,7 +1521,7 @@ var CMD={
     var k=(a[0]||"").replace(/[\\\/.]+$/,"").toLowerCase();
     if(map[k]){ go(map[k]) } else if(k&&k!=="~"&&k!=="."){ tline('<span class="c-r">Set-Location: Cannot find path \''+esc(a[0])+'\' because it does not exist.</span>') }
   },
-  "test-connection":function(){ tline(""); tline("Pinging devik with 32 bytes of data:"); tline("Reply from devik: time=&lt;1 business day"); tline("Reply from devik: evenings &amp; weekends too"); tline("") },
+  "test-connection":function(){ tline(""); tline("Pinging devik with 32 bytes of data:"); tline("Reply from devik: time=few hours"); tline("Reply from devik: evenings &amp; weekends too"); tline("") },
   "invoke-migration":function(){
     busy=true; inputRow.hidden=true;
     var total=48, n=0, w=24, p=tline("","pre");
@@ -1529,7 +1538,7 @@ var CMD={
   },
   "stop-computer":function(){ tline('<span class="c-r">Stop-Computer: Access is denied. Riva Computech doesn\'t do downtime.</span>') },
   "restart-computer":function(){ tline("Restarting…"); setTimeout(restart,400) },
-  sudo:function(){ tline("sudo works on Windows 11 now — but there's no queue here to skip."); tline('<span class="c-gr"># Type book to talk to Devik.</span>') },
+  sudo:function(){ tline("sudo works on Windows 11 now — but there's no queue here to skip."); tline('<span class="c-gr"># Type book to request a call with Devik.</span>') },
   exit:function(){ setTimeout(function(){closeTerm("close")},120) },
   "clear-host":function(){ $$(".t-l",tbody).forEach(function(l){l.remove()}) }
 };
@@ -1754,14 +1763,17 @@ form.addEventListener("submit",function(e){
   $("#f-_subject").value="New enquiry: "+(fSubj.value.trim()||"rivacomputech.com");
 
   sendBtn.disabled=true; sendBtn.querySelector("span").textContent="Sending…";
-  fetch(form.getAttribute("action"),{method:"POST",headers:{"Accept":"application/json"},body:new FormData(form)})
+  /* every field always arrives in the email, even when left blank */
+  var payload=new FormData(form);
+  ["enquiry_subject","preferred_time"].forEach(function(k){ if(!String(payload.get(k)||"").trim()) payload.set(k,"Not specified") });
+  fetch(form.getAttribute("action"),{method:"POST",headers:{"Accept":"application/json"},body:payload})
     .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,body:j}}) })
     .then(function(res){
       if(res.ok&&res.body.ok!==false){
         form.reset(); lastPrefill=""; chips.forEach(function(x){x.setAttribute("aria-pressed","false")});
         resetCaptcha();
         form.hidden=true; $("#m-sent").hidden=false;
-        toast("Message sent","Devik will reply within one business day.");
+        toast("Request sent","Devik will get back to you as soon as he can.");
       } else {
         resetCaptcha();
         setStatus("err",(res.body.errors&&res.body.errors.map(function(x){return x.message}).join(", "))||"Something went wrong — please email "+EMAIL+".");
