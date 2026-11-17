@@ -1,63 +1,75 @@
 # Riva Computech — website
 
-**rivaOS:** a single-page site that *is* a Windows 11 desktop. The taskbar is the navigation,
-the hero is a working PowerShell terminal, and every section is introduced by the cmdlet that
-would fetch it (`Get-Service`, `Compare-Object`, `Test-ITHealth`, `Get-ADUser devik`…).
+**rivacomputech.com** — the site for Devik Patel's remote IT consulting business (Microsoft 365, Azure, Windows Server and virtualization support for small businesses across the United States).
 
-No framework, no build step — `index.html` **is** the site (HTML + CSS + JS in one file).
+The site is a single page that *is* a Windows 11 desktop. The taskbar is the navigation, the hero is a working PowerShell terminal, and each section is introduced by the cmdlet that would fetch it (`Get-Service`, `Compare-Object`, `Test-ITHealth`, `Get-ADUser devik`…).
+
+No framework, no build step — `index.html` **is** the site (HTML, CSS and JS in one file).
+
+## Files
 
 ```
-index.html     ← the whole site
-og.png         ← 1200×630 social preview (rendered from the hero)
-brand/         ← the riva logo files (see "Brand" below)
-logo.svg       ← copy of brand/riva-logo.svg (primary lockup)
-favicon.svg · apple-touch-icon.png ← the riva mark
-assets/logos/  ← technology logos for the "Hands-on with" strip
-404.html       ← blue-screen-of-death 404 page
-robots.txt · sitemap.xml
-vendor/, assets/wall-*  ← unused leftovers from the earlier multi-era design (safe to delete)
+index.html            the whole site
+404.html              custom "page not found" page (terminal style)
+card.html             digital business card (opened from the QR code on the card, /card)
+devik-patel.vcf       contact file used by the card's "Save contact" button
+devik.jpg             profile photo
+logo.svg              main logo (used on the site, card and 404 page)
+brand/                logo source files (see Brand below)
+favicon.svg           browser tab icon
+favicon.ico           favicon for older browsers and Google
+favicon-48x48.png     favicon for Google search results
+favicon-192x192.png   favicon for Google search results and Android
+apple-touch-icon.png  iPhone/iPad home-screen icon
+og.png                1200×630 social preview image (links shared on LinkedIn, Facebook, etc.)
+assets/logos/         technology logos for the "Hands-on with" strip
+email/riva-logo.png   logo loaded by the email signatures (do not delete)
+robots.txt            search engine rules
+sitemap.xml           sitemap for Google Search Console
+wrangler.jsonc        Cloudflare settings (enables the custom 404 page)
+.assetsignore         files Cloudflare should not publish
 ```
 
-## What's on the page
+## What is on the page
 
 | Section | What it does |
 | --- | --- |
-| **Hero / desktop** | Original "bloom" wallpaper (drawn in SVG, recolours for dark mode) + an interactive Windows Terminal. Try `help`, `Get-Service`, `Get-ADUser devik`, `Invoke-Migration`, `book`, `ls`, `cd about`, `exit`. Tab-completion and ↑/↓ history work. Drag it by the title bar; drag to the top edge to maximise. |
-| **Services** (`Get-Service`) | Six Fluent cards, each with its PowerShell-verb cmdlet. |
-| **Why** (`Compare-Object`) | Typical IT provider `<=` vs `=>` Riva Computech. |
-| **Automation** (`Invoke-Automation`) | A real, correct `Offboard-User.ps1` (Graph + Exchange Online) with syntax highlighting and a **Run** button that plays the output. |
-| **Health check** (`Test-ITHealth`) | Eight Settings-style toggles → live score ring + "fix these first". The CTA pre-fills the contact form with the results. Nothing leaves the browser. |
-| **About** (`Get-ADUser devik`) | Devik's profile and first-person bio. |
-| **Contact** (`Send-MailMessage`) | A mail-compose window posting to Formspree, with quick-subject chips. |
+| **Hero / desktop** | Wallpaper drawn in SVG (recolours for dark mode) and an interactive Windows Terminal. Try `help`, `Get-Service`, `Get-ADUser devik`, `ls`, `cd about`, `exit`. Tab-completion and ↑/↓ history work. |
+| **Services** (`Get-Service`) | Service cards, each with its PowerShell-verb cmdlet and a plain-English line. |
+| **Why** (`Compare-Object`) | A typical IT provider versus Riva Computech. |
+| **Automation** (`Invoke-Automation`) | A real `Offboard-User.ps1` script with syntax highlighting and a **Run** button that plays the output. |
+| **Health check** (`Test-ITHealth`) | Settings-style toggles that give a live score. The button pre-fills the contact form with the result. Nothing leaves the browser. |
+| **About** (`Get-ADUser devik`) | Devik's profile and bio. |
+| **Contact** (`Send-MailMessage`) | A request form for a free 30-minute call, with a preferred-time field and the availability hours. Posts to Formspree and uses reCAPTCHA. |
 
-**The shell:** a fixed Win11 taskbar (scroll-spy running indicators, tooltips), a Start menu with
-search (no match → "Ask Devik about '…'" pre-fills the form), power menu (Sleep → lock screen,
-Restart → replays the intro, Shut down → a joke), Quick Settings (dark mode, reduce motion, copy
-email) and a calendar flyout. Light/dark follows the OS until the visitor picks one.
+The shell around it: a fixed taskbar with scroll-spy, a Start menu with search, a power menu (Sleep shows a lock screen), Quick Settings (dark mode, reduced motion, copy email) and a calendar flyout. Light and dark follow the visitor's system until they choose one.
 
-**Easter eggs:** Konami code → Windows 3.1 (Internet Archive emulator). Type `devik` anywhere → 🎵.
+Easter eggs: the Konami code opens Windows 3.1 (Internet Archive emulator), and typing `devik` anywhere plays a song.
 
-The Start button uses the riva logo rather than the Windows logo, the wallpaper is original,
-and the footer carries a trademark disclaimer, so the site doesn't look affiliated with Microsoft.
+The Start button uses the Riva logo rather than the Windows logo, the wallpaper is original, and the footer carries a trademark disclaimer, so the site does not look affiliated with Microsoft.
 
 ## Brand
 
-The logo is **"Prompt"**: a lowercase `r` followed by a blinking block cursor, like the PowerShell
-prompt Devik lives in.
+Logo source files live in `brand/`. They are not used by the site itself; they are kept for print, social profiles and future designs. Main colour: `#0067c0`.
 
 | File | Use |
 | --- | --- |
-| `brand/riva-logo.svg` | Primary lockup (mark + wordmark) on light backgrounds |
-| `brand/riva-logo-white.svg` | Reversed, for dark backgrounds |
-| `brand/riva-wordmark.svg` | Wordmark only (`riva▮` + COMPUTECH) |
-| `brand/riva-mark.svg` · `riva-mark-dark.svg` | App icon / favicon / avatar (dark variant has a lighter tile + edge) |
+| `brand/riva-computech-logo.svg` | Full logo with "COMPUTECH", on light backgrounds (same as the root `logo.svg`) |
+| `brand/riva-computech-logo-white.svg` | Full logo in white, for dark backgrounds |
+| `brand/riva-logo.svg` | "riva" wordmark only, on light backgrounds |
+| `brand/riva-logo-white.svg` | "riva" wordmark only, in white |
+| `brand/riva-icon.svg` | Square app icon (white mark on a blue tile) |
 
-Colours: tile `#0d1625` · cursor `#1e9bf0` · ink `#0b1b30` · COMPUTECH `#5c6b80` (on dark: tile
-`#1a2740`, COMPUTECH `#9fb0c6`). The wordmark is JetBrains Mono Bold converted to outlines (SIL
-Open Font License, which allows use in logos), so the files don't need the font installed. The site inlines the mark plus a **compact** wordmark (COMPUTECH set
-relatively larger so it stays legible at header size). The hero cursor blinks four times on load,
-then stays solid. Keep clear space of at least the cursor's width around the lockup, and don't use the
-wordmark without the mark below ~24px tall. Use the mark on its own instead.
+The site loads the root `logo.svg`, not the copy in `brand/`. If you change the logo, update both.
+
+## Hosting
+
+- **Domain and hosting:** Cloudflare. The site is a Cloudflare Workers project that deploys from this GitHub repo; every push to `main` republishes it.
+- **404 page:** `wrangler.jsonc` sets `not_found_handling` to `404-page`, so any unknown address shows `404.html`.
+- **Not published:** files listed in `.assetsignore` stay out of the live site.
+- **Email:** Zoho Mail (free plan) for `@rivacomputech.com`.
+- **Form:** Formspree (`https://formspree.io/f/xvkkjper`). The notification address is set in the Formspree dashboard, not in the code. Formspree endpoints are public by design, and the form has a `_gotcha` honeypot field.
+- **Search:** verified in Google Search Console (Domain property, DNS TXT record in Cloudflare). `sitemap.xml` is submitted there.
 
 ## Preview locally
 
@@ -67,33 +79,19 @@ python3 -m http.server 8080
 
 Then open <http://localhost:8080>.
 
-## Deploy (GitHub Pages)
+## Updating things
 
-Repo **Settings → Pages → Deploy from a branch → `main` / root**. Every push to `main` republishes.
-For the custom domain, add a `CNAME` file containing `rivacomputech.com` (it was removed in
-`fa4c46e`) and point DNS at GitHub Pages: apex `A` records `185.199.108–111.153`, `www` →
-`CNAME` → `joe-at-heirloom.github.io`. If DNS is on Cloudflare, use DNS-only (grey cloud).
-
-## ⚠️ TODO before launch (from Devik)
-
-All marked `TODO(Devik)` in `index.html`:
-
-1. **Formspree ID.** Create a form at <https://formspree.io> (with `rivacomputech@gmail.com`) and
-   replace `YOUR_FORMSPREE_ID` in the form `action`. Until then, **Send opens the visitor's email
-   app with the message pre-filled**, so the form still works.
-2. **Phone number & service area.** Add them to the Contact "Phone" row and to the JSON-LD
-   (`telephone`, `areaServed`).
-3. **Photo.** Swap the `DP` initials in the About card for a square `devik.jpg`.
-4. **Bio check.** The About copy mentions that the business is named after his daughter. Confirm he's
-   happy to share that.
-
-Honesty rules for copy: **10+ years**, **no Microsoft certifications** (none are claimed), and
-**no testimonials** until there are real ones.
+| To change | Edit |
+| --- | --- |
+| Text, phone, hours, prices | `index.html` (search for the words) |
+| Phone or email on the business card | `card.html` and `devik-patel.vcf` |
+| Address and phone shown to Google | the `application/ld+json` block near the top of `index.html` |
+| Social preview image | replace `og.png` (keep 1200×630). Facebook and LinkedIn can take days to refresh; use their debugger tools to speed it up. |
+| Logo | replace `logo.svg` and keep the `?v=` number in the links updated so browsers fetch the new one |
+| Email signature logo | replace `email/riva-logo.png` with the same file name |
 
 ## Notes
 
-- Fonts: Segoe UI Variable on Windows, SF on Apple, Inter elsewhere. Cascadia Code (Windows
-  Terminal's font) for anything monospaced.
-- Respects `prefers-reduced-motion` and `prefers-color-scheme`. Visitors can override both in
-  Quick Settings.
-- Formspree endpoints are public by design. The form has a `_gotcha` honeypot.
+- Fonts: Segoe UI Variable on Windows, SF on Apple, Inter elsewhere. Cascadia Code (Windows Terminal's font) for anything monospaced.
+- Respects `prefers-reduced-motion` and `prefers-color-scheme`. Visitors can override both in Quick Settings.
+- Honesty rules for the copy: 10+ years of experience, no Microsoft certifications claimed, and no testimonials until there are real ones.
