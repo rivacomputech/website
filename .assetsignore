@@ -1,9 +1,6 @@
 .github
 .gitignore
-.nojekyll
 README.md
 wrangler.jsonc
 .assetsignore
-index_backup.html
-index_backup_1.html
-index_backup_2.html
+brand
