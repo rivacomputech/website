@@ -55,6 +55,7 @@ if(m==='reduce'||(m!=='full'&&matchMedia('(prefers-reduced-motion: reduce)').mat
   "email": "devik.patel@rivacomputech.com",
   "url": "https://rivacomputech.com/",
   "telephone": "+1-313-405-7164",
+  "address": { "@type": "PostalAddress", "addressLocality": "Canton", "addressRegion": "MI", "addressCountry": "US" },
   "areaServed": { "@type": "Country", "name": "United States" },
   "founder": { "@type": "Person", "name": "Devik Patel", "jobTitle": "Owner" },
   "knowsAbout": ["Microsoft 365","Microsoft Azure","Exchange Online","SharePoint","Microsoft Intune","Microsoft Entra ID","Active Directory","Data migration","Backup and disaster recovery","PowerShell","Windows Server","VMware","Hyper-V","Citrix"]
@@ -602,6 +603,8 @@ textarea.field{resize:vertical;min-height:150px;line-height:1.55}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .foot ul a{color:var(--text-2);text-decoration:none;font-size:14.5px}
 .foot ul a:hover{color:var(--accent-ink)}
+.foot-loc{display:flex;align-items:center;gap:8px;font-size:14.5px;color:var(--text-2)}
+.foot-loc .i{width:16px;height:16px;flex:none;color:var(--accent)}
 .legal{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start;margin-top:56px;padding-top:24px;border-top:1px solid var(--stroke);font-size:12.5px;color:var(--text-3)}
 .legal span:last-child{grid-column:2 / 4}
 .legal kbd{font:500 11.5px/1 var(--mono);padding:2px 5px;border-radius:4px;border:1px solid var(--stroke-2)}
@@ -1318,7 +1321,7 @@ Write-Host "✔ $User offboarded." -ForegroundColor Green</code></pre>
       </nav>
       <div>
         <h4>Get in touch</h4>
-        <ul><li><a href="#contact">Request a free 30-min call</a></li><li><a href="mailto:devik.patel@rivacomputech.com">devik.patel@rivacomputech.com</a></li></ul>
+        <ul><li><a href="#contact">Request a free 30-min call</a></li><li><a href="mailto:devik.patel@rivacomputech.com">devik.patel@rivacomputech.com</a></li><li class="foot-loc"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Canton, Michigan, USA</span></li></ul>
       </div>
     </div>
     <div class="legal">
